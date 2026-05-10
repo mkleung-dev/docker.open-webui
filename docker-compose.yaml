@@ -1,0 +1,13 @@
+services:
+  openwebui:
+    image: ${IMAGE:-ghcr.io/open-webui/open-webui:main}
+    container_name: ${CONTAINER_NAME:-open-webui}
+    restart: ${RESTART_POLICY:-unless-stopped}
+    ports:
+      - "${HOST_PORT:-3000}:${CONTAINER_PORT:-8080}"
+    volumes:
+      - ${DATA_VOLUME:-open-webui}:/app/backend/data
+
+volumes:
+  open-webui:
+    name: ${DATA_VOLUME:-open-webui}
